@@ -36,4 +36,15 @@ public class OrderService {
     public void getOrderById(Long id) {
         orderJpaRepository.findById(id).orElseThrow(() -> new RuntimeException("Order not found with id: " + id));
     }
+
+    @Transactional
+    public void updateOrderStatus(Long orderId, String newStatus) {
+        Order order = orderJpaRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found with id: " + orderId));
+
+        log.info("Updating order {} from status {} to {}", orderId, order.getStatus(), newStatus);
+        order.setStatus(newStatus);
+    }
+
+
 }
