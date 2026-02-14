@@ -33,8 +33,8 @@ public class OrderService {
         return createdOrder;
     }
 
-    public void getOrderById(Long id) {
-        orderJpaRepository.findById(id).orElseThrow(() -> new RuntimeException("Order not found with id: " + id));
+    public Order getOrderById(Long id) {
+        return orderJpaRepository.findById(id).orElseThrow(() -> new RuntimeException("Order not found with id: " + id));
     }
 
     @Transactional
