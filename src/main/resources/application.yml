@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: order-service
+  profiles:
+    include:
+      - db
+      - kafka
+    default: local
+
+server:
+  port: 8081
