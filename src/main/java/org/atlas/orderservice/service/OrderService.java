@@ -1,7 +1,6 @@
 package org.atlas.orderservice.service;
 
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.atlas.orderservice.dto.OrderEvent;
@@ -23,6 +22,7 @@ public class OrderService {
     public Order createOrder(Order order) {
         Order createdOrder = orderJpaRepository.save(order);
         OrderEvent orderEvent = OrderEvent.builder()
+                .amount(createdOrder.getAmount())
                 .orderId(createdOrder.getId())
                 .customerId(createdOrder.getCustomerId())
                 .status(createdOrder.getStatus())
