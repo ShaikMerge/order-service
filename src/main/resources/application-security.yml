@@ -1,0 +1,2 @@
+jwt:
+  secret: your-super-secret-key-change-this-in-production-min-256-bits
