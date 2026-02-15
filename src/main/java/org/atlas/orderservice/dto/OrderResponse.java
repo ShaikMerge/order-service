@@ -12,5 +12,6 @@ public class OrderResponse {
     private Long orderId;
     private String status;
     private String message;
+    private String statusCheckUrl;
 
 }
