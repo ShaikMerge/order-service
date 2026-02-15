@@ -17,11 +17,11 @@ public class OrderController {
 
     @PostMapping("/create")
     public ResponseEntity<OrderResponse> createOrder(@RequestBody Order order) {
-        Order orderId = orderService.createOrder(order);
+        Order savedOrder = orderService.createOrder(order);
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)
-                .body(new OrderResponse(orderId.getId(), "Processing",
-                        "Payment processing. Check status at /api/v1/orders/" + orderId.getId()
+                .body(new OrderResponse(savedOrder.getId(), "Processing",
+                        "Payment processing. Check status at /api/v1/orders/" + savedOrder.getId()
                         ));
     }
 

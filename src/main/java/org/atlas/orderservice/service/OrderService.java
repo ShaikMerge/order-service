@@ -41,9 +41,11 @@ public class OrderService {
     public void updateOrderStatus(Long orderId, String newStatus) {
         Order order = orderJpaRepository.findById(orderId)
                 .orElseThrow(() -> new RuntimeException("Order not found with id: " + orderId));
-
         log.info("Updating order {} from status {} to {}", orderId, order.getStatus(), newStatus);
-        order.setStatus(newStatus);
+        if(!order.getStatus().equals(newStatus)) {
+            order.setStatus(newStatus);
+       }
+
     }
 
 
